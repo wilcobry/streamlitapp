@@ -101,7 +101,7 @@ def name_trend_plot(df, letter='J', width=800, height=600):
 
         # Update layout
         fig.update_layout(
-            title=f"Name Trend and Sex Distribution for '{letter}'",
+            title=f"Name Trend and Sex Distribution for Names with Letter '{letter}'",
             xaxis_title="Year",
             yaxis_title="Total Count",
             yaxis2_title="Ratio",
