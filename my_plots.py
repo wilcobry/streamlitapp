@@ -55,8 +55,8 @@ def name_frequencies_plot(df, year=200, width=800, height=600):
     )
     return fig
 
-def name_trend_plot(df, name='John', width=800, height=600):
-    name_data = df[df['name'] == name].copy()
+def name_trend_plot(df, letter='J', width=800, height=600):
+    name_data = df[df['name'].str[0] == letter].copy()
     color_map = {"M": "#636EFA", "F": "#EF553B"}
 
     if name_data.empty:
@@ -101,7 +101,7 @@ def name_trend_plot(df, name='John', width=800, height=600):
 
         # Update layout
         fig.update_layout(
-            title=f"Name Trend and Sex Distribution for '{name}'",
+            title=f"Name Trend and Sex Distribution for '{letter}'",
             xaxis_title="Year",
             yaxis_title="Total Count",
             yaxis2_title="Ratio",
