@@ -37,17 +37,18 @@ tab1, tab2, tab3 = st.tabs(['City', 'Price', 'Square Footage'])
 
 with tab1: 
     city_data = data[data['City']==input_city].copy()
-    fig = px.histogram(city_data, x='Price', title = 'Distribution of Housing Prices')
+    fig = px.histogram(city_data, x='Price', title = 'Distribution of Housing Prices', 
+                       nbins = 10)
     st.plotly_chart(fig)
 
 with tab2:
     st.header("Distribution of Bedrooms Within Price Range")
     price_data = data[(data['Price'] >= price_range[0]) & (data['Price'] <= price_range[1])].copy()
-    fig2 = px.histogram(price_data, x= 'Beds')
+    fig2 = px.histogram(price_data, x= 'Beds',
+                        nbins=10)
     st.plotly_chart(fig2)
-
     st.header('Houses Within Price Range')
-    st.dataframe(data.drop(columns=['Unnamed: 0']))
+    st.dataframe(price_data.drop(columns=['Unnamed: 0']))
 
 with tab3:
     st.header("Price by Square Footage For Selected Bedroom Count")
