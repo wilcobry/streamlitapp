@@ -42,18 +42,16 @@ with tab1:
 with tab2:
     st.header("Distribution of Bedrooms Within Price Range")
     price_data = data[(data['Price'] >= price_range[0]) & (data['Price'] <= price_range[1])].copy()
-    #price_data = data[data['Price']].astype(int).between(price_range[0], price_range[1]).copy()
     fig2 = px.histogram(price_data, x= 'Beds')
     st.plotly_chart(fig2)
 
     st.header('Houses Within Price Range')
-    st.dataframe(price_data)
-    st.write(price_data.head())
+    st.dataframe(data.drop(columns=['Unnamed: 0']))
 
 with tab3:
     st.header("Price by Square Footage For Selected Bedroom Count")
-    sq_data = data[data['Sq_Footage']].between(square_feet[0], square_feet[1]).copy()
+    sq_data = data[(data['Sq_Footage'] >= square_feet[0]) & (data['Sq_Footage'] <= square_feet[1])].copy()
     fig3 = px.scatter(sq_data, x='Sq_Footage', y='Price', hover_data = 'City')
     st.plotly_chart(fig3)
-    st.write(sq_data.head())
+
 
