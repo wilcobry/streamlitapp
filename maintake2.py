@@ -64,8 +64,8 @@ with tab3:
     sq_data = data[(data['Sq_Footage'] >= square_feet[0]) & (data['Sq_Footage'] <= square_feet[1])].copy()
     fig3 = px.scatter(sq_data, x='Sq_Footage', y='Price', hover_data = 'City',
                       labels = {
-                           'Category': 'Square Footage',
-                           'Values': 'Price ($)'
+                           'Sq_Footage': 'Square Footage',
+                           'Price': 'Price ($)'
                        })
     st.plotly_chart(fig3)
 
