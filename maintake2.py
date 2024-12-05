@@ -41,7 +41,7 @@ with tab1:
 
 with tab2:
     st.header("Distribution of Bedrooms Within Price Range")
-    price_data = (data[data['Price']].astype(int) >= price_range[0] and data[data['Price']].astype(int) <= price_range[1]).copy()
+    price_data = data[(data['Price'] >= price_range[0]) & (data['Price'] <= price_range[1])]
     #price_data = data[data['Price']].astype(int).between(price_range[0], price_range[1]).copy()
     fig2 = px.histogram(price_data, x= 'Beds')
     st.plotly_chart(fig2)
