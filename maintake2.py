@@ -13,6 +13,7 @@ import streamlit as st
 def load_data():
     return pd.read_csv('housing_finalapp.csv')
 data = load_data()
+data['Zip_Code'] = data['Zip_Code'].astype(str)
 
 st.title('My Cool Housing App')
 
