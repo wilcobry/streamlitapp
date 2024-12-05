@@ -61,7 +61,7 @@ with tab2:
 
 with tab3:
     st.header(f"Price by Square Footage for {n_beds} beds")
-    sq_data = data[(data['Sq_Footage'] >= square_feet[0]) & (data['Sq_Footage'] <= square_feet[1])].copy()
+    sq_data = data[(data['Sq_Footage'] >= square_feet[0]) & (data['Sq_Footage'] <= square_feet[1]) & (data['Beds'] == n_beds)].copy()
     fig3 = px.scatter(sq_data, x='Sq_Footage', y='Price', hover_data = 'City',
                       labels = {
                            'Sq_Footage': 'Square Footage',
