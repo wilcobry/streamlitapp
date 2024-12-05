@@ -47,7 +47,7 @@ with tab1:
     st.plotly_chart(fig)
 
 with tab2:
-    st.header(f"Distribution of Bedrooms Within ${price_range[0]} and ${price_range[1]}")
+    st.header(f"Distribution of Bedrooms Within \${price_range[0]} and \${price_range[1]}")
     price_data = data[(data['Price'] >= price_range[0]) & (data['Price'] <= price_range[1])].copy()
     fig2 = px.histogram(price_data, x= 'Beds',
                         nbins=6,
