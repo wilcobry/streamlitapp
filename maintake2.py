@@ -41,7 +41,7 @@ with tab1:
 
 with tab2:
     st.header("Distribution of Bedrooms Within Price Range")
-    price_data = data['Price'].between(price_range[0], price_range[1])
+    price_data = data[data['Price']].between(price_range[0], price_range[1])
     fig2 = px.histogram(price_data, x= 'Beds')
     st.plotly_chart(fig2)
 
@@ -50,7 +50,7 @@ with tab2:
 
 with tab3:
     st.header("Price by Square Footage For Selected Bedroom Count")
-    sq_data = data['Sq_Footage'].between(square_feet[0], square_feet[1])
+    sq_data = data[data['Sq_Footage']].between(square_feet[0], square_feet[1])
     fig3 = px.scatter(sq_data, x='Sq_Footage', y='Price', hover_data = 'City')
     st.plotly_chart(fig3)
 
