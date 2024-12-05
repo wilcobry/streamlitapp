@@ -33,27 +33,40 @@ with st.sidebar:
 
 
 
-tab1, tab2, tab3 = st.tabs(['City', 'Price', 'Square Footage'])
+tab1, tab2, tab3 = st.tabs(['City', 'Rooms by Price', 'Square Footage'])
 
 with tab1: 
+    st.header(f"Distribution of Housing Prices in {input_city}")
     city_data = data[data['City']==input_city].copy()
-    fig = px.histogram(city_data, x='Price', title = 'Distribution of Housing Prices', 
-                       nbins = 20)
+    fig = px.histogram(city_data, x='Price', 
+                       nbins = 30,
+                       labels = {
+                           'Category': 'Price ($)',
+                           'Values': 'Count'
+                       })
     st.plotly_chart(fig)
 
 with tab2:
-    st.header("Distribution of Bedrooms Within Price Range")
+    st.header(f"Distribution of Bedrooms Within ${price_range[0]} and ${price_range[1]}")
     price_data = data[(data['Price'] >= price_range[0]) & (data['Price'] <= price_range[1])].copy()
     fig2 = px.histogram(price_data, x= 'Beds',
-                        nbins=6)
+                        nbins=6,
+                        labels = {
+                           'Category': 'Number of Beds',
+                           'Values': 'Count'
+                       })
     st.plotly_chart(fig2)
     st.header('Houses Within Price Range')
     st.dataframe(price_data.drop(columns=['Unnamed: 0']))
 
 with tab3:
-    st.header("Price by Square Footage For Selected Bedroom Count")
+    st.header(f"Price by Square Footage for {n_beds} beds")
     sq_data = data[(data['Sq_Footage'] >= square_feet[0]) & (data['Sq_Footage'] <= square_feet[1])].copy()
-    fig3 = px.scatter(sq_data, x='Sq_Footage', y='Price', hover_data = 'City')
+    fig3 = px.scatter(sq_data, x='Sq_Footage', y='Price', hover_data = 'City',
+                      labels = {
+                           'Category': 'Square Footage',
+                           'Values': 'Price ($)'
+                       })
     st.plotly_chart(fig3)
 
 
